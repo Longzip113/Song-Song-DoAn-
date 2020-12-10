@@ -1,6 +1,7 @@
 package com.longnguyen.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,25 +35,26 @@ public class HomeController extends HttpServlet {
 			String number = req.getParameter("number");
 			sachService.setSizeArray(Long.parseLong(number));
 			sachService.setNumberThreads(null);
-			sachService.setTimeSingle(null);
-			sachService.setTimeThreads(null);
 
 			SachModel sachModelSingle = new SachModel();
 			SachModel sachModelThreads = new SachModel();
 			sachService.listSingle = new ArrayList<SachModel>();
 			sachService.listThreads = new ArrayList<SachModel>();
-			sachService.getListSach(Integer.parseInt(number));
-			sachModelSingle.setListResult(sachService.listSingle);
+            try {
+                sachService.getListSach(Integer.parseInt(number));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            sachModelSingle.setListResult(sachService.listSingle);
 			sachModelThreads.setListResult(sachService.listThreads);
 
 			req.setAttribute("modelSingle", sachModelSingle);
 			req.setAttribute("modelThreads", sachModelThreads);
 		} else if (action.equals("search")) {
-			String tenNguoiMuon = req.getParameter("namePeople");
+			String input = req.getParameter("input");
+            String styleSearch = req.getParameter("styleSearch");
 			if(sachService.listThreads != null) {
-				SachModel item = new SachModel();
-				item.setTenNguoiMuon(tenNguoiMuon);
-				listKetQua = sachService.search(item, sachService.listThreads);
+				listKetQua = sachService.search(input, sachService.listThreads, styleSearch);
 				req.setAttribute("ketqua", listKetQua);
 			}
 		}
@@ -67,21 +69,11 @@ public class HomeController extends HttpServlet {
 		String styleSort = req.getParameter("styleSort");
 
 		if (styleSort.equals("single")) {
-			if (selectSort.equals("people")) {
-				sachService.setTimeSingle(sachService.SortSingle(sachService.listSingle, "people"));
-			} else {
-				sachService.setTimeSingle(sachService.SortSingle(sachService.listSingle, "nameBook"));
-			}
+			sachService.setTimeSingle(sachService.SortSingle(sachService.listSingle, selectSort));
 		} else {
 			String numberThread = req.getParameter("numberThread");
 			sachService.setNumberThreads(Long.parseLong(numberThread));
-			if (selectSort.equals("people")) {
-				sachService.setTimeThreads(
-						sachService.SortThreaded(Integer.parseInt(numberThread), sachService.listThreads, "people"));
-			} else {
-				sachService.setTimeThreads(
-						sachService.SortThreaded(Integer.parseInt(numberThread), sachService.listThreads, "nameBook"));
-			}
+			sachService.SortThreaded(Integer.parseInt(numberThread), sachService.listThreads, selectSort);
 		}
 
 		SachModel sachModelSingle = new SachModel();

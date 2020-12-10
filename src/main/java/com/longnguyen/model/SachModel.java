@@ -1,9 +1,21 @@
 package com.longnguyen.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SachModel {
+
+    public String getMaPhieuMuon() {
+        return maPhieuMuon;
+    }
+
+    public void setMaPhieuMuon(String maPhieuMuon) {
+        this.maPhieuMuon = maPhieuMuon;
+    }
+
+    private String maPhieuMuon;
+
 	public String getTenSach() {
         return tenSach;
     }
@@ -43,5 +55,34 @@ public class SachModel {
     }
 
     private String thuatToan;
+
+    public Date getNgayMuon() {
+        return ngayMuon;
+    }
+
+    public int getSoNgayMuon() {
+        return soNgayMuon;    }
+
+    private Date ngayMuon;
+
+    public String getNgayMuonStr() {
+        return ngayMuonStr;
+    }
+
+    public void setNgayMuonStr(String ngayMuonStr) {
+        this.ngayMuonStr = ngayMuonStr;
+    }
+
+    private String ngayMuonStr;
+
+    public void setNgayMuon( Date ngayMuon) {
+        this.ngayMuon = ngayMuon;
+    }
+
+    public void setSoNgayMuon(int soNgayMuon) {
+        this.soNgayMuon = soNgayMuon;
+    }
+
+    private int soNgayMuon;
 
 }

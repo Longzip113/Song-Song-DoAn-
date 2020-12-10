@@ -9,22 +9,38 @@ public class searchThreaded{
 	private List<SachModel> myArray;
 	public List<SachModel> searchArray;
 	private int numberThread;
-	private SachModel key;
+	private String key;
+	public String styleSearch;
 
-	public searchThreaded(List<SachModel> myArray, int numberThread, SachModel key) {
+	public searchThreaded(List<SachModel> myArray, int numberThread, String key, String styleSearch) {
 		this.myArray = myArray;
 		this.searchArray = new ArrayList<>();
 		this.key = key;
 		this.numberThread = numberThread;
+		this.styleSearch = styleSearch;
 	}
 
 	public class linearSearch_Thread extends Thread{
 		public int startIndex, endIndex;
 		@Override
 		public void run() {
-			for(int i = startIndex; i<=endIndex; i++) {
-				if(myArray.get(i).getTenNguoiMuon().equals(key.getTenNguoiMuon())) {
-					searchArray.add(myArray.get(i));
+			if (styleSearch.equals("nameBook")) {
+				for(int i = startIndex; i<=endIndex; i++) {
+					if(myArray.get(i).getTenSach().contains(key)) {
+						searchArray.add(myArray.get(i));
+					}
+				}
+			} else if (styleSearch.equals("code")){
+				for(int i = startIndex; i<=endIndex; i++) {
+					if(myArray.get(i).getMaPhieuMuon().contains(key)) {
+						searchArray.add(myArray.get(i));
+					}
+				}
+			} else {
+				for(int i = startIndex; i<=endIndex; i++) {
+					if(myArray.get(i).getTenNguoiMuon().contains(key)) {
+						searchArray.add(myArray.get(i));
+					}
 				}
 			}
 		}

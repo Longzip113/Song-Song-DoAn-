@@ -21,6 +21,12 @@ public class QuickSortSingle {
 		int length = inArr.size();
 		if (styleSort.equals("nameBook")) {
 			quickSortNameBook(0, length - 1, inArr);
+		} else if (styleSort.equals("day")){
+			quickSortDay(0, length - 1, inArr);
+		} else if (styleSort.equals("code")){
+			quickSortCode(0, length - 1, inArr);
+		} else if (styleSort.equals("number")){
+			quickSortNumber(0, length - 1, inArr);
 		} else {
 			quickSort(0, length - 1, inArr);
 		}
@@ -75,6 +81,84 @@ public class QuickSortSingle {
 			quickSortNameBook(i, higher, inArr);
 	}
 //    end sort name book
+
+//   day sort
+	public void quickSortDay(int lower, int higher, List<SachModel> inArr) {
+		int i = lower;
+		int j = higher;
+		SachModel pivot = inArr.get(lower + (higher - lower) / 2);
+		while (i <= j) {
+			while (inArr.get(i).getNgayMuon().compareTo(pivot.getNgayMuon()) < 0) {
+				i++;
+			}
+			while (inArr.get(j).getNgayMuon().compareTo(pivot.getNgayMuon()) > 0) {
+				j--;
+			}
+			if (i <= j) {
+				swap(i, j, inArr);
+				i++;
+				j--;
+			}
+		}
+
+		if (lower < j)
+			quickSortDay(lower, j, inArr);
+		if (i < higher)
+			quickSortDay(i, higher, inArr);
+	}
+//    end sort day book
+
+//   code sort
+	public void quickSortCode(int lower, int higher, List<SachModel> inArr) {
+		int i = lower;
+		int j = higher;
+		SachModel pivot = inArr.get(lower + (higher - lower) / 2);
+		while (i <= j) {
+			while (inArr.get(i).getMaPhieuMuon().compareTo(pivot.getMaPhieuMuon()) < 0) {
+				i++;
+			}
+			while (inArr.get(j).getMaPhieuMuon().compareTo(pivot.getMaPhieuMuon()) > 0) {
+				j--;
+			}
+			if (i <= j) {
+				swap(i, j, inArr);
+				i++;
+				j--;
+			}
+		}
+
+		if (lower < j)
+			quickSortCode(lower, j, inArr);
+		if (i < higher)
+			quickSortCode(i, higher, inArr);
+	}
+//    end sort code book
+
+//   Number sort
+	public void quickSortNumber(int lower, int higher, List<SachModel> inArr) {
+		int i = lower;
+		int j = higher;
+		SachModel pivot = inArr.get(lower + (higher - lower) / 2);
+		while (i <= j) {
+			while (inArr.get(i).getSoNgayMuon() < pivot.getSoNgayMuon()) {
+				i++;
+			}
+			while (inArr.get(j).getSoNgayMuon() > pivot.getSoNgayMuon()) {
+				j--;
+			}
+			if (i <= j) {
+				swap(i, j, inArr);
+				i++;
+				j--;
+			}
+		}
+
+		if (lower < j)
+			quickSortNumber(lower, j, inArr);
+		if (i < higher)
+			quickSortNumber(i, higher, inArr);
+	}
+//    end sort number book
 
 	public void swap(int i, int j, List<SachModel> inArr) {
 		SachModel temp = inArr.get(i);

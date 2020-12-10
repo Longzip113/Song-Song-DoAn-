@@ -301,15 +301,30 @@
 										<h4>Sắp xếp theo</h4>
 										<div class="form-check">
 											<div class="row">
-												<div class="col-6">
+												<div class="col-3">
 													<input class="form-check-input" type="radio"
 														name="selectSort" value="people"> <label
 														class="form-check-label"> Tên người mượn </label>
 												</div>
-												<div class="col-6">
+												<div class="col-2">
 													<input class="form-check-input" type="radio"
 														name="selectSort" value="nameBook"> <label
 														class="form-check-label"> Tên sách </label>
+												</div>
+												<div class="col-2">
+													<input class="form-check-input" type="radio"
+														   name="selectSort" value="day"> <label
+														class="form-check-label"> Ngày mượn </label>
+												</div>
+												<div class="col-3">
+													<input class="form-check-input" type="radio"
+														   name="selectSort" value="code"> <label
+														class="form-check-label"> Mã phiếu mượn </label>
+												</div>
+												<div class="col-2">
+													<input class="form-check-input" type="radio"
+														   name="selectSort" value="number"> <label
+														class="form-check-label"> Số ngày mượn </label>
 												</div>
 											</div>
 										</div>
@@ -342,15 +357,21 @@
 					id="table-id">
 					<thead>
 						<tr>
+							<th scope="col">Mã phiếu mượn</th>
 							<th scope="col">Tên người mượn</th>
 							<th scope="col">Tên sách</th>
+							<th scope="col">Ngày mượn</th>
+							<th scope="col">Số ngày mượn</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="item" items="${modelSingle.listResult}">
 							<tr>
+								<td>${item.maPhieuMuon}</td>
 								<td>${item.tenNguoiMuon}</td>
 								<td>${item.tenSach}</td>
+								<td>${item.ngayMuonStr}</td>
+								<td>${item.soNgayMuon}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -393,15 +414,30 @@
 							<h4>Sắp xếp theo</h4>
 							<div class="form-check">
 								<div class="row">
-									<div class="col-6">
-										<input class="form-check-input" type="radio" name="selectSort"
-											value="people"> <label class="form-check-label">
-											Tên người mượn </label>
+									<div class="col-3">
+										<input class="form-check-input" type="radio"
+											   name="selectSort" value="people"> <label
+											class="form-check-label"> Tên người mượn </label>
 									</div>
-									<div class="col-6">
-										<input class="form-check-input" type="radio" name="selectSort"
-											value="nameBook"> <label class="form-check-label">
-											Tên sách </label>
+									<div class="col-2">
+										<input class="form-check-input" type="radio"
+											   name="selectSort" value="nameBook"> <label
+											class="form-check-label"> Tên sách </label>
+									</div>
+									<div class="col-2">
+										<input class="form-check-input" type="radio"
+											   name="selectSort" value="day"> <label
+											class="form-check-label"> Ngày mượn </label>
+									</div>
+									<div class="col-3">
+										<input class="form-check-input" type="radio"
+											   name="selectSort" value="code"> <label
+											class="form-check-label"> Mã phiếu mượn </label>
+									</div>
+									<div class="col-2">
+										<input class="form-check-input" type="radio"
+											   name="selectSort" value="number"> <label
+											class="form-check-label"> Số ngày mượn </label>
 									</div>
 								</div>
 							</div>
@@ -433,15 +469,21 @@
 					id="table-id2">
 					<thead>
 						<tr>
+							<th scope="col">Mã phiếu mượn</th>
 							<th scope="col">Tên người mượn</th>
 							<th scope="col">Tên sách</th>
+							<th scope="col">Ngày mượn</th>
+							<th scope="col">Số ngày mượn</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="item" items="${modelThreads.listResult}">
 							<tr>
+								<td>${item.maPhieuMuon}</td>
 								<td>${item.tenNguoiMuon}</td>
 								<td>${item.tenSach}</td>
+								<td>${item.ngayMuonStr}</td>
+								<td>${item.soNgayMuon}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -467,26 +509,49 @@
 	<div class="text-center">
 		<form action="<c:url value='/search'/>"  method="GET">
 			<div>
-				<h4>Nhập tên người mượn</h4>
+				<h2>Chọn kiểu tìm kiếm</h2>
+				<div class="row">
+					<div class="col-4">
+						<input class="form-check-input" type="radio"
+							   name="styleSearch" value="people"> <label
+							class="form-check-label"> Tên người mượn </label>
+					</div>
+					<div class="col-4">
+						<input class="form-check-input" type="radio"
+							   name="styleSearch" value="nameBook"> <label
+							class="form-check-label"> Tên sách </label>
+					</div>
+					<div class="col-4">
+						<input class="form-check-input" type="radio"
+							   name="styleSearch" value="code"> <label
+							class="form-check-label"> Mã phiếu mượn </label>
+					</div>
+				</div>
 				<input type="submit" class="btn btn-primary" value="Tìm kiếm" />
 			</div>
 			<input type="hidden" value="search" name="action"> <input
-				name="namePeople" class="form-control" >
+				name="input" class="form-control" >
 		</form>
 		<h1>Bảng kết quả tìm kiếm</h1>
 	</div>
 	<table class="table table-hover table-striped  table-dark">
 		<thead>
 			<tr>
+				<th scope="col">Mã phiếu mượn</th>
 				<th scope="col">Tên người mượn</th>
 				<th scope="col">Tên sách</th>
+				<th scope="col">Ngày mượn</th>
+				<th scope="col">Số ngày mượn</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="item" items="${ketqua}">
 				<tr>
+					<td>${item.maPhieuMuon}</td>
 					<td>${item.tenNguoiMuon}</td>
 					<td>${item.tenSach}</td>
+					<td>${item.ngayMuonStr}</td>
+					<td>${item.soNgayMuon}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
