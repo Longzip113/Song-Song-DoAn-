@@ -32,7 +32,13 @@ public class searchThreaded{
 				}
 			} else if (styleSearch.equals("code")){
 				for(int i = startIndex; i<=endIndex; i++) {
-					if(myArray.get(i).getMaPhieuMuon().contains(key)) {
+					if(myArray.get(i).getMaPhieuMuon().equals(key)) {
+						searchArray.add(myArray.get(i));
+					}
+				}
+			} else if (styleSearch.equals("mota")){
+				for(int i = startIndex; i<=endIndex; i++) {
+					if(myArray.get(i).getMoTa().contains(key)) {
 						searchArray.add(myArray.get(i));
 					}
 				}

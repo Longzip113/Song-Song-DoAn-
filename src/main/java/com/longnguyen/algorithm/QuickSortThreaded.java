@@ -153,39 +153,6 @@ public class QuickSortThreaded {
 // end sort code
 
 
-//    sort number
-	public void sortNumber(List<SachModel> inArr) {
-		if (inArr == null || inArr.size() == 0) {
-			return;
-		}
-		int length = inArr.size();
-		quickSortNumber(0, length - 1, inArr);
-	}
-
-	public void quickSortNumber(int lower, int higher, List<SachModel> inArr) {
-		int i = lower;
-		int j = higher;
-		SachModel pivot = inArr.get(lower + (higher - lower) / 2);
-		while (i <= j) {
-			while (inArr.get(i).getSoNgayMuon() < pivot.getSoNgayMuon()) {
-				i++;
-			}
-			while (inArr.get(j).getSoNgayMuon() > pivot.getSoNgayMuon()) {
-				j--;
-			}
-			if (i <= j) {
-				swap(i, j, inArr);
-				i++;
-				j--;
-			}
-		}
-
-		if (lower < j)
-			quickSortNumber(lower, j, inArr);
-		if (i < higher)
-			quickSortNumber(i, higher, inArr);
-	}
-// end sort number
 
 	public void swap(int i, int j, List<SachModel> inArr) {
 		SachModel temp = inArr.get(i);
@@ -210,8 +177,6 @@ public class QuickSortThreaded {
 				quickSortDay(bienDau, bienCuoi, a);
 			} else if (styleSort.equals("code")){
 				quickSortCode(bienDau, bienCuoi, a);
-			} else if (styleSort.equals("number")){
-				quickSortNumber(bienDau, bienCuoi, a);
 			} else {
 				quickSort(bienDau, bienCuoi, a);
 			}
@@ -269,10 +234,6 @@ public class QuickSortThreaded {
 		} else if(styleSort.equals("code")){
 			time1 = System.nanoTime()/1000000;
 			sortCode(a);
-			time2 = System.nanoTime()/1000000;
-		} else if(styleSort.equals("number")){
-			time1 = System.nanoTime()/1000000;
-			sortNumber(a);
 			time2 = System.nanoTime()/1000000;
 		} else {
 			time1 = System.nanoTime()/1000000;

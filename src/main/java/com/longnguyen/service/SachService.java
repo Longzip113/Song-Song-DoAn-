@@ -54,9 +54,16 @@ public class SachService {
 	private String[] tenLots = { "Thành ", "Trung ", "Quang ", "Phương ", "Bảo ", "Vân ", "An ","Anh ","Gia ","Phụng ","Thị ","Trần ","Thị Ngọc ","Thế " };
 	private String[] tens = { "Long", "Duy", "Sơn", "Nam", "Xuân", "Quỳnh", "Tài", "Lân","Khang","Khánh","Ý"};
 
-	private String[] tenSachs = { "Người xa lạ", "Đi tìm thời gian đã mất", "Hoàng tử bé", "Chùm nho uất hận" ,"Trên đường bay","Cafe cùng Tony","Nơi em trở về có tôi đứng đợi","Đắc nhân tâm",
-			"Trái đất tròn không gì là không thể","Ai sẽ mang giày cao gót cho em","Tôi thấy hoa vàng trên cỏ xanh","Ngũ quái Sài Gòn","Kính vạn hoa","Hành trình của Elaina", "Color full"};
-	
+	private String[] tenSachs = { "Người xa lạ", "Đi tìm thời gian đã mất", "Hoàng tử bé", "Chùm nho uất hận"
+			,"Trên đường bay","Cafe cùng Tony","Nơi em trở về có tôi đứng đợi","Đắc nhân tâm",
+			"Trái đất tròn không gì là không thể","Ai sẽ mang giày cao gót cho em","Tôi thấy hoa vàng trên cỏ xanh","Ngũ quái Sài Gòn",
+			"Kính vạn hoa","Hành trình của Elaina", "Color full"};
+
+	private String[] moTas = { "Người xa lạ", "Đi tìm thời gian đã mất", "Hoàng tử bé", "Chùm nho uất hận"
+			,"Trên đường bay","Cafe cùng Tony","Nơi em trở về có tôi đứng đợi","Đắc nhân tâm",
+			"Trái đất tròn không gì là không thể","Ai sẽ mang giày cao gót cho em","Tôi thấy hoa vàng trên cỏ xanh","Ngũ quái Sài Gòn",
+			"Kính vạn hoa","Hành trình của Elaina", "Color full"};
+
 	public List<SachModel> listSingle = new ArrayList<>();
 	public List<SachModel> listThreads = new ArrayList<>();
 
@@ -73,6 +80,8 @@ public class SachService {
 			String ngayMuon = ngay + "/" + thang + "/" + nam;
 			SachModel model = new SachModel();
 
+			String moTa = "";
+			moTa = moTas[sach];
 			String hoVaTen = "";
 			hoVaTen = hos[ho];
 			hoVaTen += tenLots[tenLot];
@@ -86,7 +95,7 @@ public class SachService {
 			model.setMaPhieuMuon("MPM" + i);
 			model.setNgayMuon(date1);
 			model.setNgayMuonStr(ngayMuon);
-			model.setSoNgayMuon(soNgayMuon);
+			model.setMoTa(moTa);
 
 			listSingle.add(model);
 			listThreads.add(model);

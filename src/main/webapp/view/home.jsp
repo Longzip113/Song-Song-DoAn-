@@ -236,11 +236,7 @@
 .grad {
 	background-image: radial-gradient(circle, violet, pink, orange);
 }
-/* bonus for content */
-.content-background {
-	background-image: url("../img/background.jpg");
-	background-size: 50%;
-}
+
 </style>
 </head>
 <body>
@@ -361,7 +357,7 @@
 							<th scope="col">Tên người mượn</th>
 							<th scope="col">Tên sách</th>
 							<th scope="col">Ngày mượn</th>
-							<th scope="col">Số ngày mượn</th>
+							<th scope="col">Mô tả</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -371,7 +367,7 @@
 								<td>${item.tenNguoiMuon}</td>
 								<td>${item.tenSach}</td>
 								<td>${item.ngayMuonStr}</td>
-								<td>${item.soNgayMuon}</td>
+								<td>${item.moTa}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -473,7 +469,7 @@
 							<th scope="col">Tên người mượn</th>
 							<th scope="col">Tên sách</th>
 							<th scope="col">Ngày mượn</th>
-							<th scope="col">Số ngày mượn</th>
+							<th scope="col">Mô tả</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -483,7 +479,7 @@
 								<td>${item.tenNguoiMuon}</td>
 								<td>${item.tenSach}</td>
 								<td>${item.ngayMuonStr}</td>
-								<td>${item.soNgayMuon}</td>
+								<td>${item.moTa}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -511,20 +507,25 @@
 			<div>
 				<h2>Chọn kiểu tìm kiếm</h2>
 				<div class="row">
-					<div class="col-4">
+					<div class="col-3">
 						<input class="form-check-input" type="radio"
 							   name="styleSearch" value="people"> <label
 							class="form-check-label"> Tên người mượn </label>
 					</div>
-					<div class="col-4">
+					<div class="col-3">
 						<input class="form-check-input" type="radio"
 							   name="styleSearch" value="nameBook"> <label
 							class="form-check-label"> Tên sách </label>
 					</div>
-					<div class="col-4">
+					<div class="col-3">
 						<input class="form-check-input" type="radio"
 							   name="styleSearch" value="code"> <label
 							class="form-check-label"> Mã phiếu mượn </label>
+					</div>
+					<div class="col-3">
+						<input class="form-check-input" type="radio"
+							   name="styleSearch" value="mota"> <label
+							class="form-check-label"> Mô tả </label>
 					</div>
 				</div>
 				<input type="submit" class="btn btn-primary" value="Tìm kiếm" />
@@ -541,7 +542,7 @@
 				<th scope="col">Tên người mượn</th>
 				<th scope="col">Tên sách</th>
 				<th scope="col">Ngày mượn</th>
-				<th scope="col">Số ngày mượn</th>
+				<th scope="col">Mô tả</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -551,7 +552,7 @@
 					<td>${item.tenNguoiMuon}</td>
 					<td>${item.tenSach}</td>
 					<td>${item.ngayMuonStr}</td>
-					<td>${item.soNgayMuon}</td>
+					<td>${item.moTa}</td>
 				</tr>
 			</c:forEach>
 		</tbody>

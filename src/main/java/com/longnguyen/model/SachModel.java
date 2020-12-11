@@ -60,9 +60,6 @@ public class SachModel {
         return ngayMuon;
     }
 
-    public int getSoNgayMuon() {
-        return soNgayMuon;    }
-
     private Date ngayMuon;
 
     public String getNgayMuonStr() {
@@ -79,10 +76,15 @@ public class SachModel {
         this.ngayMuon = ngayMuon;
     }
 
-    public void setSoNgayMuon(int soNgayMuon) {
-        this.soNgayMuon = soNgayMuon;
+
+    public String getMoTa() {
+        return moTa;
     }
 
-    private int soNgayMuon;
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
+    private String moTa;
 
 }
